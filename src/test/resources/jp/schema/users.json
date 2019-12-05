@@ -1,0 +1,210 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://jsonplaceholder.typicode.com",
+  "type": "array",
+  "title": "The Root Schema",
+  "items": {
+    "$id": "#/items",
+    "type": "object",
+    "title": "The Items Schema",
+    "required": [
+      "id",
+      "name",
+      "username",
+      "email",
+      "address",
+      "phone",
+      "website",
+      "company"
+    ],
+    "properties": {
+      "id": {
+        "$id": "#/items/properties/id",
+        "type": "integer",
+        "title": "The Id Schema",
+        "default": 0,
+        "examples": [
+          9
+        ]
+      },
+      "name": {
+        "$id": "#/items/properties/name",
+        "type": "string",
+        "title": "The Name Schema",
+        "default": "",
+        "examples": [
+          "Glenna Reichert"
+        ],
+        "pattern": "^(.*)$"
+      },
+      "username": {
+        "$id": "#/items/properties/username",
+        "type": "string",
+        "title": "The Username Schema",
+        "default": "",
+        "examples": [
+          "Delphine"
+        ],
+        "pattern": "^(.*)$"
+      },
+      "email": {
+        "$id": "#/items/properties/email",
+        "type": "string",
+        "title": "The Email Schema",
+        "default": "",
+        "examples": [
+          "Chaim_McDermott@dana.io"
+        ],
+        "pattern": "^(.*)$"
+      },
+      "address": {
+        "$id": "#/items/properties/address",
+        "type": "object",
+        "title": "The Address Schema",
+        "required": [
+          "street",
+          "suite",
+          "city",
+          "zipcode",
+          "geo"
+        ],
+        "properties": {
+          "street": {
+            "$id": "#/items/properties/address/properties/street",
+            "type": "string",
+            "title": "The Street Schema",
+            "default": "",
+            "examples": [
+              "Dayna Park"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "suite": {
+            "$id": "#/items/properties/address/properties/suite",
+            "type": "string",
+            "title": "The Suite Schema",
+            "default": "",
+            "examples": [
+              "Suite 449"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "city": {
+            "$id": "#/items/properties/address/properties/city",
+            "type": "string",
+            "title": "The City Schema",
+            "default": "",
+            "examples": [
+              "Bartholomebury"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "zipcode": {
+            "$id": "#/items/properties/address/properties/zipcode",
+            "type": "string",
+            "title": "The Zipcode Schema",
+            "default": "",
+            "examples": [
+              "76495-3109"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "geo": {
+            "$id": "#/items/properties/address/properties/geo",
+            "type": "object",
+            "title": "The Geo Schema",
+            "required": [
+              "lat",
+              "lng"
+            ],
+            "properties": {
+              "lat": {
+                "$id": "#/items/properties/address/properties/geo/properties/lat",
+                "type": "string",
+                "title": "The Lat Schema",
+                "default": "",
+                "examples": [
+                  "24.6463"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "lng": {
+                "$id": "#/items/properties/address/properties/geo/properties/lng",
+                "type": "string",
+                "title": "The Lng Schema",
+                "default": "",
+                "examples": [
+                  "-168.8889"
+                ],
+                "pattern": "^(.*)$"
+              }
+            }
+          }
+        }
+      },
+      "phone": {
+        "$id": "#/items/properties/phone",
+        "type": "string",
+        "title": "The Phone Schema",
+        "default": "",
+        "examples": [
+          "(775)976-6794 x41206"
+        ],
+        "pattern": "^(.*)$"
+      },
+      "website": {
+        "$id": "#/items/properties/website",
+        "type": "string",
+        "title": "The Website Schema",
+        "default": "",
+        "examples": [
+          "conrad.com"
+        ],
+        "pattern": "^(.*)$"
+      },
+      "company": {
+        "$id": "#/items/properties/company",
+        "type": "object",
+        "title": "The Company Schema",
+        "required": [
+          "name",
+          "catchPhrase",
+          "bs"
+        ],
+        "properties": {
+          "name": {
+            "$id": "#/items/properties/company/properties/name",
+            "type": "string",
+            "title": "The Name Schema",
+            "default": "",
+            "examples": [
+              "Yost and Sons"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "catchPhrase": {
+            "$id": "#/items/properties/company/properties/catchPhrase",
+            "type": "string",
+            "title": "The Catchphrase Schema",
+            "default": "",
+            "examples": [
+              "Switchable contextually-based project"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "bs": {
+            "$id": "#/items/properties/company/properties/bs",
+            "type": "string",
+            "title": "The Bs Schema",
+            "default": "",
+            "examples": [
+              "aggregate real-time technologies"
+            ],
+            "pattern": "^(.*)$"
+          }
+        }
+      }
+    }
+  }
+}
