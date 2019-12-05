@@ -2,16 +2,18 @@ package rest.assured.demo;
 
 import org.junit.Test;
 
-import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.*;
+import static io.restassured.matcher.RestAssuredMatchers.*;
+import static org.hamcrest.Matchers.equalTo;
 
 public class SimpleTest extends BaseTest {
 
     @Test
-    public void getUsers() {
+    public void checkLottoId() {
         given()
-            .spec(jsonPlaceholder)
-            .get(USERS_PATH)
+            .spec(myJsonServer)
+            .get("/lotto")
             .then()
-            .statusCode(200);
+            .body("lotto.lottoId", equalTo(5));
     }
 }
