@@ -7,12 +7,15 @@ import io.restassured.specification.RequestSpecification;
 
 import java.util.Arrays;
 
-class BaseTest {
+abstract class BaseTest {
 
     static final String USERS_PATH = "/users";
     RequestSpecification jsonPlaceholder = new RequestSpecBuilder()
         .setBaseUri("https://jsonplaceholder.typicode.com")
         .addFilters(Arrays.asList(new RequestLoggingFilter(), new ResponseLoggingFilter()))
         .build();
-    RequestSpecification myJsonServer = new RequestSpecBuilder().setBaseUri("https://my-json-server.typicode.com").build();
+    RequestSpecification myJsonServer = new RequestSpecBuilder()
+        .setBaseUri("https://my-json-server.typicode.com/mikhail-g/rest-assured-demo")
+        .addFilters(Arrays.asList(new RequestLoggingFilter(), new ResponseLoggingFilter()))
+        .build();
 }
