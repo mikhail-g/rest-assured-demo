@@ -35,4 +35,10 @@ public class MyJsonServerActions {
                 .spec(myJsonServer)
                 .get("/products");
     }
+
+    public Response getStore() {
+        return given()
+                .spec(myJsonServer)
+                .get("/store");
+    }
 }
