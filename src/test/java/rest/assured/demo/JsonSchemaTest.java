@@ -4,18 +4,17 @@ import com.github.fge.jsonschema.cfg.ValidationConfiguration;
 import com.github.fge.jsonschema.main.JsonSchemaFactory;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import org.junit.Test;
+import rest.assured.demo.actions.JsonPlaceholderActions;
 
 import static com.github.fge.jsonschema.SchemaVersion.DRAFTV4;
-import static io.restassured.RestAssured.given;
 
 public class JsonSchemaTest extends BaseTest {
 
+    private JsonPlaceholderActions placeholderApi = new JsonPlaceholderActions();
+
     @Test
     public void validateSchema() {
-        given()
-            .spec(jsonPlaceholder)
-            .queryParam("id", 1)
-            .get(USERS_PATH)
+        placeholderApi.getUsers()
             .then()
             .body(JsonSchemaValidator.matchesJsonSchemaInClasspath("jp/schema/users.json"));
     }
@@ -28,11 +27,7 @@ public class JsonSchemaTest extends BaseTest {
                 .freeze())
             .freeze();
 
-        given()
-            .spec(jsonPlaceholder)
-            .queryParam("id", 1)
-            .when()
-            .get(USERS_PATH)
+        placeholderApi.getUsers("id", 1)
             .then()
             .body(JsonSchemaValidator
                 .matchesJsonSchemaInClasspath("jp/schema/users_err.json")
