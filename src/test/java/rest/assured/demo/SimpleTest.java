@@ -1,6 +1,5 @@
 package rest.assured.demo;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import rest.assured.demo.actions.MyJsonServerActions;
 
@@ -26,7 +25,6 @@ public class SimpleTest extends BaseTest {
                 .body("lotto.winners.winnerId", hasItems(23, 54));
     }
 
-    @Ignore("The endpoint is not ready yet")
     @Test
     public void checkPriceFloat() {
         myJsonServer.getNumbers()
@@ -34,7 +32,6 @@ public class SimpleTest extends BaseTest {
                 .body("price", is(12.12f));
     }
 
-    @Ignore("The endpoint is not ready yet")
     @Test
     public void checkPriceBigDecimal() {
         MyJsonServerActions myJsonServer = new MyJsonServerActions();
