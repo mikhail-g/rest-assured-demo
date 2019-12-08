@@ -15,30 +15,49 @@ import static io.restassured.path.json.config.JsonPathConfig.NumberReturnType.BI
 
 public class MyJsonServerActions {
 
-    private RequestSpecification myJsonServer = new RequestSpecBuilder()
-            .setBaseUri("https://my-json-server.typicode.com/mikhail-g/rest-assured-demo")
-            .addFilters(Arrays.asList(new RequestLoggingFilter(), new ResponseLoggingFilter()))
-            .build();
+    private RequestSpecification spec;
+    private RestAssuredConfig config;
+
+    public MyJsonServerActions() {
+        spec = new RequestSpecBuilder()
+                .setBaseUri("https://my-json-server.typicode.com/mikhail-g/rest-assured-demo")
+                .addFilters(Arrays.asList(new RequestLoggingFilter(), new ResponseLoggingFilter()))
+                .build();
+        config = RestAssuredConfig.config();
+    }
 
     public Response getLotto() {
         return given()
-                .spec(myJsonServer)
+                .config(config)
+                .spec(spec)
                 .get("/lotto");
     }
 
     public Response getProducts() {
         return given()
-                .config(RestAssuredConfig
-                        .config()
-                        .jsonConfig(jsonConfig()
-                                .numberReturnType(BIG_DECIMAL)))
-                .spec(myJsonServer)
+                .config(config)
+                .spec(spec)
                 .get("/products");
+    }
+
+    public void setConfigNumbersAsBigDecimal() {
+        config = RestAssuredConfig
+                .config()
+                .jsonConfig(jsonConfig()
+                        .numberReturnType(BIG_DECIMAL));
     }
 
     public Response getStore() {
         return given()
-                .spec(myJsonServer)
+                .config(config)
+                .spec(spec)
                 .get("/store");
+    }
+
+    public Response getNumbers() {
+        return given()
+                .config(config)
+                .spec(spec)
+                .get("/numbers");
     }
 }

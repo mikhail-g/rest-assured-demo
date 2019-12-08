@@ -1,10 +1,12 @@
 package rest.assured.demo;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import rest.assured.demo.actions.MyJsonServerActions;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.hasItems;
+import java.math.BigDecimal;
+
+import static org.hamcrest.Matchers.*;
 
 public class SimpleTest extends BaseTest {
 
@@ -22,5 +24,23 @@ public class SimpleTest extends BaseTest {
         myJsonServer.getLotto()
                 .then()
                 .body("lotto.winners.winnerId", hasItems(23, 54));
+    }
+
+    @Ignore("The endpoint is not ready yet")
+    @Test
+    public void checkPriceFloat() {
+        myJsonServer.getNumbers()
+                .then()
+                .body("price", is(12.12f));
+    }
+
+    @Ignore("The endpoint is not ready yet")
+    @Test
+    public void checkPriceBigDecimal() {
+        MyJsonServerActions myJsonServer = new MyJsonServerActions();
+        myJsonServer.setConfigNumbersAsBigDecimal();
+        myJsonServer.getNumbers()
+                .then()
+                .body("price", is(new BigDecimal("12.12")));
     }
 }

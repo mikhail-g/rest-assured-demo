@@ -2,7 +2,6 @@ package rest.assured.demo;
 
 import io.restassured.common.mapper.TypeRef;
 import io.restassured.path.json.JsonPath;
-import org.junit.Ignore;
 import org.junit.Test;
 import rest.assured.demo.actions.MyJsonServerActions;
 
@@ -15,14 +14,6 @@ import static org.hamcrest.Matchers.*;
 public class ComplexParsingTest extends BaseTest {
 
     private MyJsonServerActions myJsonServer = new MyJsonServerActions();
-
-    @Ignore
-    @Test
-    public void checkPriceBigDecimal() {
-        myJsonServer.getProducts()
-                .then()
-                .body("products.find { it.id == 2 }", hasItems("price"));
-    }
 
     @Test
     public void findAllLessThen() {
@@ -47,7 +38,6 @@ public class ComplexParsingTest extends BaseTest {
         assertThat(sumOfAllAuthorLength, is(53));
     }
 
-    @Ignore
     @Test
     public void deserializationWithGenerics() {
         List<Map<String, Object>> products = myJsonServer.getProducts()
